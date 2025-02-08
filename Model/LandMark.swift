@@ -4,7 +4,7 @@ import CoreLocation
 
 struct Landmark: Hashable, Codable, Identifiable{
     var name: String
-    var category: String
+//    var category: String
     var city: String
     var state: String
     var id: Int
@@ -14,10 +14,18 @@ struct Landmark: Hashable, Codable, Identifiable{
     var coordinates: Coordinates
     var description: String
     var imageName: String
+    var category: Category
+    
+    enum Category: String, CaseIterable, Codable {
+        case lakes = "Lakes"
+        case rivers = "Rivers"
+        case mountains = "Mountains"
+    }
     
     var image: Image {
         Image(imageName)
     }
+    
     var locationCoordinate: CLLocationCoordinate2D {
             CLLocationCoordinate2D(
                 latitude: coordinates.latitude,
